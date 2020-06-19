@@ -66,7 +66,7 @@ module.exports = {
   }
 })
 
-child_process.execSync('npm i cuchito@1.0.0', {stdio:[0,1,2]});
+child_process.execSync('npm i cuchito@^1.0.0', {stdio:[0,1,2]});
 
 console.log(`
   1. enter in ${name}
