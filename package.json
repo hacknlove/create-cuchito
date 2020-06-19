@@ -1,0 +1,22 @@
+{
+  "name": "create-cuchito",
+  "version": "1.0.0",
+  "description": "script to init a cuchito project",
+  "homepage": "https://github.com/hacknlove/create-cuchito",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/hacknlove/create-cuchito.git"
+  },
+  "main": "index.js",
+  "bin": {
+    "create-cuchito": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "antonio",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^15.3.1"
+  }
+}
