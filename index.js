@@ -26,7 +26,8 @@ fs.writeFileSync(`package.json`, `
     "test": "cuchito-test"
   },
   "dependencies": {
-    "cuchito": "cuchito"
+    "@hapi/joi": "^17.1.1",
+    "cuchito": "^1.0.0"
   }
 }
 `)
@@ -37,6 +38,7 @@ module.exports = {
   ip: '127.0.0.1',
   port: 8181,
   maxTimeSpan: 1000,
+  timeout: 15000,
   multiply: {
     count: 50,
     interval: 500,
@@ -66,7 +68,7 @@ module.exports = {
   }
 })
 
-child_process.execSync('npm i cuchito@^1.0.0', {stdio:[0,1,2]});
+child_process.execSync('npm i', {stdio:[0,1,2]});
 
 console.log(`
   1. enter in ${name}
