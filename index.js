@@ -1,35 +1,25 @@
 #!/usr/bin/env node
 const fs = require('fs')
-const yargs = require('yargs');
 const child_process = require('child_process');
 
-const options = yargs
-  .usage('Usage: npm init cuchito <name>')
-  .strict()
-  .command(
-    "npm init cuchito <name>",
-    "",
-    yargs => {
-      return yargs
-        .positional('name', {
-          description: 'Name of the project',
-          type: 'string',
-          demandOption: 'true'
-        })
-    }
-  ).argv
+const name = process.argv[2]
 
-if (!fs.existsSync(options.name)) {
-  fs.mkdirSync(options.name);
-} else if (!fs.lstatSync(options.name).isDirectory()) {
-  console.log(options.name, 'exists and it is not a directory')
+if (!name) {
+  console.log('Usage: npm init cuchito <name>')
+  process.exit(1)
 }
 
-process.chdir(options.name)
+if (!fs.existsSync(name)) {
+  fs.mkdirSync(name);
+} else if (!fs.lstatSync(name).isDirectory()) {
+  console.log(name, 'exists and it is not a directory')
+}
+
+process.chdir(name)
 
 fs.writeFileSync(`package.json`, `
 {
-  "name": "${options.name}",
+  "name": "${name}",
   "version": "1.0.0",
   "scripts": {
     "start": "cuchito",
@@ -72,14 +62,14 @@ module.exports = {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   } else if (!fs.lstatSync(dir).isDirectory()) {
-    console.log(`${options.name}/${dir}`, 'exists and it is not a directory')
+    console.log(`${name}/${dir}`, 'exists and it is not a directory')
   }
 })
 
-child_process.execSync('npm install cuchito',{stdio:[0,1,2]});
+child_process.execSync('npm i cuchito@1.0.0', {stdio:[0,1,2]});
 
 console.log(`
-  1. enter in ${options.name}
+  1. enter in ${name}
   2. edit the config files
   3. run "npm start" to perform and record a live stress test session
   4. run "npm test" to replay the stress test session

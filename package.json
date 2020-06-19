@@ -4,8 +4,8 @@
   "description": "script to init a cuchito project",
   "homepage": "https://github.com/hacknlove/create-cuchito",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/hacknlove/create-cuchito.git"
+    "type": "git",
+    "url": "https://github.com/hacknlove/create-cuchito.git"
   },
   "main": "index.js",
   "bin": {
